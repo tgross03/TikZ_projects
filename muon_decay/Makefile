@@ -9,12 +9,12 @@ TIKZ_PDFS := $(addprefix build/,$(subst ,,$(TIKZFILES:.tex=.pdf))) # get names f
 all: $(TIKZ_PDFS)
 
 $(TIKZ_PDFS): FORCE | build
-	$(TeXInputs) latexmk -r ./latexmkrc $(TIKZFILES)
+	$(TeXInputs) latexmk -r ../latexmkrc $(TIKZFILES)
 
 FORCE:
 
 preview: FORCE | build
-	$(TeXInputs) latexmk -r ./latexmkrc -pvc $(TIKZFILES)
+	$(TeXInputs) latexmk -r ../latexmkrc -pvc $(TIKZFILES)
 
 build:
 	mkdir -p build/
