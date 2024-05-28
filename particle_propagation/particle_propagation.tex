@@ -1,0 +1,56 @@
+\input{../tikz-header.tex}
+
+\begin{document}
+\scalebox{1}{
+\begin{tikzpicture}
+
+
+   \draw[densely dashed] (1.5,0) coordinate (A) -- (0,0) coordinate (B)
+   -- (1,1) coordinate (C)
+   pic [draw, solid, "$\varphi_1$",angle radius=0.9cm] {angle = A--B--C};
+
+   \node[draw, xshift=-0.7cm, scale=0.4, align=left, fill=red, fill opacity=0.2, text opacity=1] at (B)
+   % {$\vec{r} = \begin{pmatrix} x\\ y\end{pmatrix}$\\ $E_{\text{dep}} = 0$\\ $\theta_{\text{dir}} = \varphi_1$};
+   {$
+         \begin{aligned}
+            \vec{r}_{\text{pos}} & =
+            \begin{pmatrix}
+               x \\
+               y
+            \end{pmatrix}                                          \\
+            \theta_{\text{dir}}  & = \varphi_0 + \varDelta\varphi_1^*
+         \end{aligned}
+      $};
+
+   \draw[->, >=stealth] (B) -- (C);
+   \draw[red] node at (B){.};
+   \node[scale=0.6] at (0.35,0.6) {$l_{\text{s}}^*$};
+
+   \draw[densely dashed] (2.25,1) coordinate (A) -- (1,1) coordinate (B)
+   -- (1.25,2) coordinate (C)
+   pic [draw, solid, "$\varphi_2$",angle radius=0.75cm] {angle = A--B--C};
+
+   \node[draw, xshift=-1.05cm, yshift=0.2cm, scale=0.4, align=left, fill=blue, fill opacity=0.2, text opacity=1] at (B)
+   % {$(x_2,\;y_2) = (s\cdot\cos(\varphi_1), s\cdot\cos(\varphi_1))$\\ $E_{\text{dep}} = 0$\\ $\theta_{\text{dir}} = \varphi_1 + \varDelta\varphi$};
+   {$
+         \begin{aligned}
+            \vec{r}_{\text{pos}} & =
+            \begin{pmatrix}
+               x + l_{\text{s}}^*\cdot\cos(\varphi_1) \\
+               y + l_{\text{s}}^*\cdot\sin(\varphi_1)
+            \end{pmatrix} \\
+            \theta_{\text{dir}}  & = \varphi_1 + \varDelta\varphi_2^*
+         \end{aligned}
+      $};
+
+
+   \draw[->, >=stealth] (B) -- (1.28, 2.12);
+   % \draw node at (C){.};
+   \draw[blue] node at (B){.};
+
+   \draw (-1.5,-0.65) -- (2.5,-0.65);
+   \node[scale=0.35] at (0.5,-0.8) {The variables marked with a ${}^*$ are randomly generated variables};
+
+\end{tikzpicture}
+}
+\end{document}
