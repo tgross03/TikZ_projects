@@ -1,0 +1,8 @@
+\input{../tikz-header}
+\begin{document}
+    \feynmandiagram[layered layout, horizontal=i1 to a] {
+        i1 [particle={$\gamma$}] -- [boson] a -- [fermion1] f1 [particle={$\ce{e-}$}];
+        i2 [particle={$\ce{e-}$}] -- [fermion1] b -- [fermion1, edge label=$\ce{e-}$] a;
+        b -- [boson, edge label=$\gamma$] c [blob,label={right:$Z$}];
+    };
+\end{document}

@@ -1,0 +1,10 @@
+\input{../tikz-header}
+\begin{document}
+    \feynmandiagram[vertical=a to b] {
+        i1 [particle=$\gamma$] -- [boson] a;
+        a -- f1 [particle=$\ce{e-}$];
+        i2 [particle=$\ce{e-}$] -- [fermion1] b;
+        b -- [boson] f2 [particle=$\gamma$];
+        b -- [fermion1, edge label=$\ce{e}$] a;
+    };
+\end{document}

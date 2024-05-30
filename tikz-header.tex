@@ -24,6 +24,31 @@
 \usepackage{pgfplots}
 \usepackage{tikz-feynman}
 
+\tikzfeynmanset{
+  fermion1/.style={
+    /tikz/postaction={
+      /tikz/decoration={
+        markings,
+        mark=at position 0.5 with {
+          \arrow{to[length=3mm, width=2mm]};
+        },
+      },
+      /tikz/decorate=true,
+    },
+  },
+  anti fermion1/.style={
+    /tikz/postaction={
+      /tikz/decoration={
+        markings,
+        mark=at position 0.5 with {
+          \arrow{to reversed[length=3mm, width=2mm]};
+        },
+      },
+      /tikz/decorate=true,
+    },
+  },
+}
+
 % math
 \usepackage{amsmath}
 \usepackage{amssymb}
