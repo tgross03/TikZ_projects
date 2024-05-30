@@ -3,7 +3,7 @@
     \feynmandiagram[vertical=a to b] {
         i1 [particle=$\gamma$] -- [boson] a;
         a -- [fermion1] f1 [particle=$\ce{e-}$];
-        i2 [blob, label={left:$Z$}] -- [boson] b;
+        i2 [blob, label={left:$Z$}] -- [boson, edge label=$\gamma$] b;
         b -- [anti fermion1] f2 [particle=$\ce{e+}$];
         b -- [fermion1, edge label=$\ce{e}$] a;
     };
