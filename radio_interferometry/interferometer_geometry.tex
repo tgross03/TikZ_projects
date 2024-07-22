@@ -1,0 +1,43 @@
+\input{../tikz-header.tex}
+\setmainfont{Libertinus Serif}
+\setsansfont{Libertinus Sans}
+\setmathfont{Libertinus Math}
+
+\begin{document}
+  \begin{tikzpicture}
+
+    \coordinate (T1) at (-2, 0);
+    \coordinate (T2) at (2, 0);
+
+    \coordinate (SRC) at (2.75, 4);
+
+    \draw (-3, 0) -- (3, 0);
+
+    \fill (SRC) circle (0.7mm);
+    \draw[xshift=3mm, anchor=west] node at (SRC){$S$};
+
+    \fill (T1) circle (0.5mm);
+    \draw[anchor=north] node at (T1){$p$};
+
+    \fill (T2) circle (0.5mm);
+    \draw[anchor=north] node at (T2){$q$};
+
+    \draw[->, >=stealth, line width=0.15mm, blue] (T1) -- (T2);
+    \node[anchor=north, blue] at ($(T1)!0.5!(T2)$){$\vec{b}$};
+
+    \coordinate (S) at ($(T1)!0.3!(SRC)$);
+    
+    \draw[densely dashed] (T1) -- (SRC);
+    \draw[->, >=stealth, line width=0.15mm, red] (T1) -- (S);
+    \node[anchor=west, red] at ($(T1)!0.5!(S)$){$\hat{s}$};
+
+    \coordinate (SP) at (S |- 52, 0);
+
+    \draw[densely dashed] (T2) -- (SRC);
+    \draw[violet, line width=0.15mm] (T1) -- (SP);
+    \draw[violet, opacity=0.8, line width=0.15mm, densely dashed] (SP) -- (S);
+
+    \node[violet, anchor=north] at ($(T1)!0.5!(SP)$){$\langle \hat{s},\; \vec{b}\rangle$};
+
+  \end{tikzpicture}
+\end{document}
