@@ -3,41 +3,49 @@
 \setsansfont{Libertinus Sans}
 \setmathfont{Libertinus Math}
 
+\newcommand{\proj}[2]{\langle #1,#2\rangle}
+
 \begin{document}
   \begin{tikzpicture}
-
+  
+    % basic positions
     \coordinate (T1) at (-2, 0);
     \coordinate (T2) at (2, 0);
-
-    \coordinate (SRC) at (2.75, 4);
-
+  
+    \coordinate (SRC) at (2.5, 3);
+  
+    % ground
     \draw (-3, 0) -- (3, 0);
 
-    \fill (SRC) circle (0.7mm);
-    \draw[xshift=3mm, anchor=west] node at (SRC){$S$};
-
+    % telescopes 1 and 2
     \fill (T1) circle (0.5mm);
-    \draw[anchor=north] node at (T1){$p$};
-
+    \draw[anchor=north east] node at (T1){$p$};
+  
     \fill (T2) circle (0.5mm);
-    \draw[anchor=north] node at (T2){$q$};
-
-    \draw[->, >=stealth, line width=0.15mm, blue] (T1) -- (T2);
-    \node[anchor=north, blue] at ($(T1)!0.5!(T2)$){$\vec{b}$};
-
-    \coordinate (S) at ($(T1)!0.3!(SRC)$);
+    \draw[anchor=north west] node at (T2){$q$};
+  
+    % baseline
+    \draw[->, >=stealth, line width=0.15mm, catblue] (T1) -- (T2) node[midway, below, catblue] {$\vec{b}$};
+  
+     % projected baseline
+    \coordinate (BP) at ($(SRC)!(T2)!(T1)$);
+    \draw[<-, >=stealth, line width=0.15mm, catpeach] (T2) -- (BP) node[catpeach, midway, sloped, below]{$\vec{b}_{\text{proj}}$};
+  
+    % source vector
+    \coordinate (S2) at ($0.4*(SRC) - 0.4*(T1)$);
+    \coordinate (S1) at ($0.3*(T2) - 0.3*(S2)$);
+  
+    \draw[densely dashed] (BP) -- (SRC);
+    \draw[densely dashed] (T2) -- +(S2);
+  
+    \draw[->, >=stealth, line width=0.15mm, catred] (BP) -- +($0.5*(S2)$) node[catred, midway, sloped, above]{$\hat{s}$};
+    \draw[->, >=stealth, line width=0.15mm, catred] (T2) -- +($0.5*(S2)$) node[catred, midway, sloped, above]{$\hat{s}$};
     
-    \draw[densely dashed] (T1) -- (SRC);
-    \draw[->, >=stealth, line width=0.15mm, red] (T1) -- (S);
-    \node[anchor=west, red] at ($(T1)!0.5!(S)$){$\hat{s}$};
-
-    \coordinate (SP) at (S |- 52, 0);
-
-    \draw[densely dashed] (T2) -- (SRC);
-    \draw[violet, line width=0.15mm] (T1) -- (SP);
-    \draw[violet, opacity=0.8, line width=0.15mm, densely dashed] (SP) -- (S);
-
-    \node[violet, anchor=north] at ($(T1)!0.5!(SP)$){$\langle \hat{s},\; \vec{b}\rangle$};
-
+    % \alpha angle
+    \draw[catgreen] ([xshift=1cm]T1) arc [start angle=0, end angle=34, radius=1cm] node[catgreen, left, midway, yshift=-0.08cm]{$\alpha$};
+  
+    % geometric delay
+    \draw[catmauve] (T1) -- (BP) node[catmauve, midway, sloped, above, line width=0.15mm]{\footnotesize$\left| \vec{b} \right|\cdot\cos\alpha = \proj{\vec{b}}{\hat{s}} = \tau_g\cdot\symup{c}$};
+  
   \end{tikzpicture}
 \end{document}
